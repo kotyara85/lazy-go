@@ -21,7 +21,7 @@ func SliceRemoveEmpty(slice *[]string) {
 	p := *slice
 	for _, entry := range p {
 		if strings.Trim(entry, " ") != "" {
-			p[i] = strings.Trim(entry, "")
+			p[i] = strings.Trim(entry, " ")
 			i++
 		}
 	}

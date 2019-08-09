@@ -10,7 +10,7 @@ func TestSlices(t *testing.T) {
 		t.Error("SliceUniq test failed")
 	}
 	// SliceRemoveEmpty
-	slice = []string{"test1", "", "test2"}
+	slice = []string{"test1", "  ", "test2"}
 	SliceRemoveEmpty(&slice)
 	if len(slice) != 2 {
 		t.Error("SliceRemoveEmpty test failed")
