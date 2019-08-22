@@ -2,14 +2,16 @@ package lazygo
 
 import (
 	"testing"
-
-	"gotest.tools/assert"
 )
 
 func TestStrings(t *testing.T) {
 	testString := "StRing"
 	ToLower(&testString)
-	assert.Equal(t, "string", testString)
+	if testString != "string" {
+		t.Error("ToLower operation failed")
+	}
 	ToUpper(&testString)
-	assert.Equal(t, "STRING", testString)
+	if testString != "STRING" {
+		t.Error("ToLower operation failed")
+	}
 }
