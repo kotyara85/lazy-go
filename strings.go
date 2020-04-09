@@ -15,3 +15,12 @@ func ToUpper(str *string) {
 	tmp := *str
 	*str = strings.ToUpper(tmp)
 }
+
+// RightPad fixes issues with fmt.Sprintf("") right padding
+func RightPad(s *string, pad string, plength int) {
+	tmp := *s
+	for i := len(tmp); i < plength; i++ {
+		tmp = tmp + pad
+	}
+	*s = tmp
+}
