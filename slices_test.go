@@ -1,6 +1,9 @@
 package lazygo
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestSlices(t *testing.T) {
 	// SliceUniq
@@ -23,5 +26,10 @@ func TestSlices(t *testing.T) {
 	if SliceInclude(slice, "test3") {
 		t.Error("SliceInclude test failed - shouldn't return true")
 	}
-
+	// SliceToInterface
+	testInterface := []interface{}{"test1", "test2"}
+	testSlice := []string{"test1", "test2"}
+	if !reflect.DeepEqual(testInterface, SliceToInterface(testSlice)) {
+		t.Error("SliceToInterface test failed")
+	}
 }

@@ -37,3 +37,12 @@ func SliceInclude(slice []string, str string) bool {
 	}
 	return false
 }
+
+// SliceToInterface converts []string{} to []interface{}
+func SliceToInterface(in []string) []interface{} {
+	out := make([]interface{}, len(in))
+	for i, y := range in {
+		out[i] = y
+	}
+	return out
+}
