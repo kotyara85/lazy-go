@@ -1,6 +1,9 @@
 package lazygo
 
-import "strings"
+import (
+	"strings"
+	"time"
+)
 
 // SliceUniq makes sure we have only uniq elements in slice
 func SliceUniq(slice *[]string) {
@@ -28,11 +31,32 @@ func SliceRemoveEmpty(slice *[]string) {
 	*slice = p[0:i]
 }
 
-// SliceInclude checks if a specific el is present in slice
-func SliceInclude(slice []string, str string) bool {
-	for _, element := range slice {
-		if strings.ToLower(element) == strings.ToLower(str) {
-			return true
+// SliceInclude checks if a specific values is present in slice
+func SliceInclude(s, v interface{}) bool {
+	switch s.(type) {
+	case []time.Duration:
+		for _, kk := range s.([]time.Duration) {
+			if kk == v {
+				return true
+			}
+		}
+	case []int:
+		for _, kk := range s.([]int) {
+			if kk == v {
+				return true
+			}
+		}
+	case []int64:
+		for _, kk := range s.([]int64) {
+			if kk == v {
+				return true
+			}
+		}
+	case []string:
+		for _, kk := range s.([]string) {
+			if strings.ToLower(kk) == v {
+				return true
+			}
 		}
 	}
 	return false

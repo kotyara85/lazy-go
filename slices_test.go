@@ -3,6 +3,7 @@ package lazygo
 import (
 	"reflect"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -46,7 +47,31 @@ func TestSlices(t *testing.T) {
 			expectB: &expBTrue,
 		},
 		{
-			testName: "slice include, false",
+			testName: "slice include int64, true",
+			b: func() *bool {
+				slice := SliceInclude([]int64{1, 2}, int64(1))
+				return &slice
+			}(),
+			expectB: &expBTrue,
+		},
+		{
+			testName: "slice include int, true",
+			b: func() *bool {
+				slice := SliceInclude([]int{1, 2}, 1)
+				return &slice
+			}(),
+			expectB: &expBTrue,
+		},
+		{
+			testName: "slice include time.Duration, true",
+			b: func() *bool {
+				slice := SliceInclude([]time.Duration{time.Duration(1), time.Duration(2)}, time.Duration(1))
+				return &slice
+			}(),
+			expectB: &expBTrue,
+		},
+		{
+			testName: "slice include string, false",
 			b: func() *bool {
 				slice := SliceInclude([]string{"test1", "test2"}, "test3")
 				return &slice
