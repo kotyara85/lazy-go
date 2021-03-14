@@ -48,6 +48,22 @@ func TestStrings(t *testing.T) {
 			}(),
 			expectStr: "ZBCZBCZBC",
 		},
+		{
+			testName: "string",
+			str: func() string {
+				var testString Str = "ABCABCABC"
+				return testString.String()
+			}(),
+			expectStr: "ABCABCABC",
+		},
+		{
+			testName: "format",
+			str: func() string {
+				var testString Str = "ABCABCABC"
+				return testString.Format("test-%s")
+			}(),
+			expectStr: "test-ABCABCABC",
+		},
 	}
 
 	for _, c := range cases {

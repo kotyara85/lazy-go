@@ -1,9 +1,13 @@
 package lazygo
 
 import (
+	"fmt"
 	"regexp"
 	"strings"
 )
+
+// Str type
+type Str string
 
 // ToLower lowers the variable in place
 func ToLower(str *string) {
@@ -34,4 +38,14 @@ func Replace(s *string, reg string, repl string) error {
 		return err
 	}
 	return nil
+}
+
+// Returns string
+func (s Str) String() string {
+	return string(s)
+}
+
+// Format returns formatted string
+func (s Str) Format(format string) string {
+	return fmt.Sprintf(format, string(s))
 }
